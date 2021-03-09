@@ -1,6 +1,6 @@
 package com.wyz.juc.c_018_00_AtomicXXX;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -44,7 +44,7 @@ public class T07_TestAtomicReference {
             }).start();
         }
 
-        SleepHelper.sleepSeconds(3);
+        SleepHelperUtil.sleepSeconds(3);
 
         System.out.println(order);
     }

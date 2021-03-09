@@ -1,7 +1,7 @@
 package com.wyz.juc.c_33_TheDinningPhilosophersProblem;
 
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T01_DeadLock {
     public static void main(String[] args) {
@@ -40,9 +40,9 @@ public class T01_DeadLock {
         @Override
         public void run() {
             synchronized (left) {
-                SleepHelper.sleepSeconds(1 + index);
+                SleepHelperUtil.sleepSeconds(1 + index);
                 synchronized (right) {
-                    SleepHelper.sleepSeconds(1);
+                    SleepHelperUtil.sleepSeconds(1);
                 }
             }
 

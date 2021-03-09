@@ -20,7 +20,7 @@
 
 package com.wyz.juc.c_022_RefTypeAndThreadLocal;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
@@ -42,7 +42,7 @@ public class T04_PhantomReference {
         new Thread(() -> {
             while (true) {
                 LIST.add(new byte[1024 * 1024]);
-                SleepHelper.sleepSeconds(1);
+                SleepHelperUtil.sleepSeconds(1);
                 System.out.println(phantomReference.get());
             }
         }).start();
@@ -57,7 +57,7 @@ public class T04_PhantomReference {
             }
         }).start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
     }
 }

@@ -1,6 +1,6 @@
 package com.wyz.juc.c_000_threadbasic;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -23,7 +23,7 @@ public class T04_ThreadState {
         Thread t1 = new Thread(() -> {
             System.out.println("2: " + Thread.currentThread().getState());
             for (int i = 0; i < 3; i++) {
-                SleepHelper.sleepSeconds(1);
+                SleepHelperUtil.sleepSeconds(1);
                 System.out.print(i + " ");
             }
             System.out.println();
@@ -63,14 +63,14 @@ public class T04_ThreadState {
 
         new Thread(() -> {
             synchronized (o) {
-                SleepHelper.sleepSeconds(5);
+                SleepHelperUtil.sleepSeconds(5);
             }
         }).start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t3.start();
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
         System.out.println("6: " + t3.getState());
 
         //===================================================
@@ -83,14 +83,14 @@ public class T04_ThreadState {
 
         new Thread(() -> {
             lock.lock();
-            SleepHelper.sleepSeconds(5);
+            SleepHelperUtil.sleepSeconds(5);
             lock.unlock();
         }).start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t4.start();
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
         System.out.println("7: " + t4.getState());
 
         //===================================================
@@ -100,7 +100,7 @@ public class T04_ThreadState {
 
         t5.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         System.out.println("8: " + t5.getState());
         LockSupport.unpark(t5);

@@ -1,6 +1,6 @@
 package com.wyz.juc.c_000_threadbasic;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -26,7 +26,7 @@ public class T10_Interrupt_and_lock {
 
         t1.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
 
         Thread t2 = new Thread(() -> {
@@ -40,7 +40,7 @@ public class T10_Interrupt_and_lock {
 
         t2.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t2.interrupt();
     }

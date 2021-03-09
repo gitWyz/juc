@@ -1,6 +1,6 @@
 package com.wyz.juc.c_001_sync_basics;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T00_02_SingleLockVSMultiLock {
     private static Object o1 = new Object();
@@ -11,7 +11,7 @@ public class T00_02_SingleLockVSMultiLock {
         Runnable r1 = () -> {
             synchronized (o1) {
                 System.out.println(Thread.currentThread().getName() + " start!");
-                SleepHelper.sleepSeconds(2);
+                SleepHelperUtil.sleepSeconds(2);
                 System.out.println(Thread.currentThread().getName() + " end!");
             }
         };
@@ -19,7 +19,7 @@ public class T00_02_SingleLockVSMultiLock {
         Runnable r2 = () -> {
             synchronized (o2) {
                 System.out.println(Thread.currentThread().getName() + " start!");
-                SleepHelper.sleepSeconds(2);
+                SleepHelperUtil.sleepSeconds(2);
                 System.out.println(Thread.currentThread().getName() + " end!");
             }
         };
@@ -27,7 +27,7 @@ public class T00_02_SingleLockVSMultiLock {
         Runnable r3 = () -> {
             synchronized (o3) {
                 System.out.println(Thread.currentThread().getName() + " start!");
-                SleepHelper.sleepSeconds(2);
+                SleepHelperUtil.sleepSeconds(2);
                 System.out.println(Thread.currentThread().getName() + " end!");
             }
         };

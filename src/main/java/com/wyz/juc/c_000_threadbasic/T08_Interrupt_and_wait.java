@@ -1,6 +1,6 @@
 package com.wyz.juc.c_000_threadbasic;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 /**
  * interrupt与sleep() wait() join()
@@ -23,7 +23,7 @@ public class T08_Interrupt_and_wait {
 
         t.start();
 
-        SleepHelper.sleepSeconds(5);
+        SleepHelperUtil.sleepSeconds(5);
 
         t.interrupt();
     }

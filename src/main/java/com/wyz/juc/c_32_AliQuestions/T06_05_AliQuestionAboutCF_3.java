@@ -1,6 +1,6 @@
 package com.wyz.juc.c_32_AliQuestions;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +97,7 @@ public class T06_05_AliQuestionAboutCF_3 {
             synchronized (this) {
                 System.out.println(name + "cancelling");
 
-                SleepHelper.sleepMilli(50);
+                SleepHelperUtil.sleepMilli(50);
 
                 System.out.println(name + "cancelled");
             }

@@ -1,6 +1,6 @@
 package com.wyz.juc.c_001_00_thread_end;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T03_VolatileFlag {
 
@@ -19,7 +19,7 @@ public class T03_VolatileFlag {
 
         t.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         running = false;
     }

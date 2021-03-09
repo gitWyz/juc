@@ -14,7 +14,7 @@
  */
 package com.wyz.juc.c_001_01_Visibility;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.io.IOException;
 
@@ -33,7 +33,7 @@ public class T01_HelloVolatile {
 
         new Thread(T01_HelloVolatile::m, "t1").start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         running = false;
 

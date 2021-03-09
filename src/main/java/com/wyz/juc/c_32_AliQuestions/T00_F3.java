@@ -1,6 +1,6 @@
 package com.wyz.juc.c_32_AliQuestions;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +77,7 @@ public class T00_F3 {
         public void run() {
             //模拟业务执行时间
             //实际中时间不固定，可能在处理计算任务，或者是IO任务
-            SleepHelper.sleepSeconds(timeInSeconds);
+            SleepHelperUtil.sleepSeconds(timeInSeconds);
 
             System.out.println(name + " 任务结束！");
 

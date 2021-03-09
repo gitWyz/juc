@@ -1,6 +1,6 @@
 package com.wyz.juc.c_001_00_thread_end;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 /**
  * interrupt是设定标志位
@@ -18,7 +18,7 @@ public class T04_Interrupt_and_NormalThread {
 
         t.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t.interrupt();
 

@@ -3,7 +3,7 @@
  */
 package com.wyz.juc.c_001_01_Visibility;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T02_VolatileReference {
 
@@ -22,7 +22,7 @@ public class T02_VolatileReference {
 
     public static void main(String[] args) {
         new Thread(a::m, "t1").start();
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
         a.running = false;
     }
 

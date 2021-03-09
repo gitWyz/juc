@@ -1,7 +1,7 @@
 package com.wyz.juc.c_33_TheDinningPhilosophersProblem;
 
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T02_DeadLockOpen {
     public static void main(String[] args) {
@@ -41,17 +41,17 @@ public class T02_DeadLockOpen {
         public void run() {
             if (index == 0) {
                 synchronized (left) {
-                    SleepHelper.sleepSeconds(1 + index);
+                    SleepHelperUtil.sleepSeconds(1 + index);
                     synchronized (right) {
-                        SleepHelper.sleepSeconds(1);
+                        SleepHelperUtil.sleepSeconds(1);
                         System.out.println(index + " 吃完了！");
                     }
                 }
             } else {
                 synchronized (right) {
-                    SleepHelper.sleepSeconds(1 + index);
+                    SleepHelperUtil.sleepSeconds(1 + index);
                     synchronized (left) {
-                        SleepHelper.sleepSeconds(1);
+                        SleepHelperUtil.sleepSeconds(1);
                         System.out.println(index + " 吃完了！");
                     }
                 }

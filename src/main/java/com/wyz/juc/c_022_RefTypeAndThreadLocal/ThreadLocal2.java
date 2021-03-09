@@ -10,7 +10,7 @@
  */
 package com.wyz.juc.c_022_RefTypeAndThreadLocal;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +34,14 @@ public class ThreadLocal2 {
 
             //list.add(new Person("xiaoyao"));
 
-            SleepHelper.sleepSeconds(1);
+            SleepHelperUtil.sleepSeconds(1);
             tl.set(new Person("zhangsan"));
             System.out.println(tl.get());
             tl.remove();
         }).start();
 
         new Thread(() -> {
-            SleepHelper.sleepSeconds(2);
+            SleepHelperUtil.sleepSeconds(2);
 
             System.out.println(tl.get());
         }).start();

@@ -1,6 +1,6 @@
 package com.wyz.juc.c_000_threadbasic;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 /**
  * interrupt与sleep() wait() join()
@@ -12,13 +12,13 @@ public class T09_Interrupt_and_sync {
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             synchronized (o) {
-                SleepHelper.sleepSeconds(10);
+                SleepHelperUtil.sleepSeconds(10);
             }
         });
 
         t1.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         Thread t2 = new Thread(() -> {
             synchronized (o) {
@@ -29,7 +29,7 @@ public class T09_Interrupt_and_sync {
 
         t2.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t2.interrupt();
     }

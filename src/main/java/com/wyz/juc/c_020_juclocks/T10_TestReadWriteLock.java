@@ -1,6 +1,6 @@
 package com.wyz.juc.c_020_juclocks;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.Random;
 import java.util.concurrent.locks.Lock;
@@ -19,7 +19,7 @@ public class T10_TestReadWriteLock {
     public static void read(Lock lock) {
         lock.lock();
         try {
-            SleepHelper.sleepSeconds(1);
+            SleepHelperUtil.sleepSeconds(1);
             System.out.println("read over!");
             //模拟读取操作
         } finally {
@@ -30,7 +30,7 @@ public class T10_TestReadWriteLock {
     public static void write(Lock lock, int v) {
         lock.lock();
         try {
-            SleepHelper.sleepSeconds(1);
+            SleepHelperUtil.sleepSeconds(1);
             value = v;
             System.out.println("write over!");
             //模拟写操作

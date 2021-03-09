@@ -1,6 +1,6 @@
 package com.wyz.juc.c_001_00_thread_end;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.concurrent.locks.LockSupport;
 
@@ -15,7 +15,7 @@ public class T05_InterruptAndPark {
 
         t.start();
 
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
 
         t.interrupt();
     }

@@ -1,6 +1,6 @@
 package com.wyz.juc.c_018_00_AtomicXXX;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -31,7 +31,7 @@ public class T06_TestAtomicReference {
 
                 Student s = new Student();
                 s.name = "s-" + j;
-                SleepHelper.sleepMilli(1);
+                SleepHelperUtil.sleepMilli(1);
                 s.age = j;
 
                 chairman.set(s);
@@ -39,7 +39,7 @@ public class T06_TestAtomicReference {
             }).start();
         }
 
-        SleepHelper.sleepSeconds(3);
+        SleepHelperUtil.sleepSeconds(3);
 
         System.out.println(chairman.get());
     }

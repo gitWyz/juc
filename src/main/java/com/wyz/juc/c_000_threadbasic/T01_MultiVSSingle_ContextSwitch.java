@@ -4,29 +4,31 @@ import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
+import static java.lang.System.*;
+
 public class T01_MultiVSSingle_ContextSwitch {
-    //===================================================
-    private static double[] nums = new double[10_0000_0000];
-    private static Random r = new Random();
-    private static DecimalFormat df = new DecimalFormat("0.00");
+
+    private static final double[] NUMS = new double[10_0000_0000];
+    private static final Random RANDOM = new Random();
+    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     static {
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = r.nextDouble();
+        for (int i = 0; i < NUMS.length; i++) {
+            NUMS[i] = RANDOM.nextDouble();
         }
     }
 
     private static void m1() {
-        long start = System.currentTimeMillis();
+        long start = currentTimeMillis();
 
         double result = 0.0;
-        for (int i = 0; i < nums.length; i++) {
-            result += nums[i];
+        for (double num : NUMS) {
+            result += num;
         }
 
-        long end = System.currentTimeMillis();
+        long end = currentTimeMillis();
 
-        System.out.println("m1: " + (end - start) + " result = " + df.format(result));
+        out.println("m1: " + (end - start) + " result = " + DF.format(result));
     }
 
     //=======================================================
@@ -35,17 +37,17 @@ public class T01_MultiVSSingle_ContextSwitch {
     private static void m2() throws Exception {
 
         Thread t1 = new Thread(() -> {
-            for (int i = 0; i < nums.length / 2; i++) {
-                result1 += nums[i];
+            for (int i = 0; i < NUMS.length / 2; i++) {
+                result1 += NUMS[i];
             }
         });
         Thread t2 = new Thread(() -> {
-            for (int i = nums.length / 2; i < nums.length; i++) {
-                result2 += nums[i];
+            for (int i = NUMS.length / 2; i < NUMS.length; i++) {
+                result2 += NUMS[i];
             }
         });
 
-        long start = System.currentTimeMillis();
+        long start = currentTimeMillis();
         t1.start();
         t2.start();
         t1.join();
@@ -53,9 +55,9 @@ public class T01_MultiVSSingle_ContextSwitch {
 
         result = result1 + result2;
 
-        long end = System.currentTimeMillis();
+        long end = currentTimeMillis();
 
-        System.out.println("m2: " + (end - start) + " result = " + df.format(result));
+        out.println("m2: " + (end - start) + " result = " + DF.format(result));
     }
 
     //===================================================================
@@ -65,15 +67,15 @@ public class T01_MultiVSSingle_ContextSwitch {
         final int threadCount = 32;
         Thread[] threads = new Thread[threadCount];
         double[] results = new double[threadCount];
-        final int segmentCount = nums.length / threadCount;
+        final int segmentCount = NUMS.length / threadCount;
         CountDownLatch latch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
             int m = i;
 
             threads[i] = new Thread(() -> {
-                for (int j = m * segmentCount; j < (m + 1) * segmentCount && j < nums.length; j++) {
-                    results[m] += nums[j];
+                for (int j = m * segmentCount; j < (m + 1) * segmentCount && j < NUMS.length; j++) {
+                    results[m] += NUMS[j];
                 }
                 latch.countDown();
             });
@@ -82,7 +84,7 @@ public class T01_MultiVSSingle_ContextSwitch {
 
         double resultM3 = 0.0;
 
-        long start = System.currentTimeMillis();
+        long start = currentTimeMillis();
         for (Thread t : threads) {
             t.start();
         }
@@ -93,9 +95,9 @@ public class T01_MultiVSSingle_ContextSwitch {
         }
 
 
-        long end = System.currentTimeMillis();
+        long end = currentTimeMillis();
 
-        System.out.println("m3: " + (end - start) + " result = " + df.format(result));
+        out.println("m3: " + (end - start) + " result = " + DF.format(result));
     }
 
     public static void main(String[] args) throws Exception {

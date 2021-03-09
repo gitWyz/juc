@@ -3,7 +3,7 @@
  */
 package com.wyz.juc.c_022_RefTypeAndThreadLocal;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.lang.ref.WeakReference;
 
@@ -13,7 +13,7 @@ public class T03_WeakReference {
 
         System.out.println(m.get());
         System.gc();
-        SleepHelper.sleepSeconds(1);
+        SleepHelperUtil.sleepSeconds(1);
         System.out.println(m.get());
 
 

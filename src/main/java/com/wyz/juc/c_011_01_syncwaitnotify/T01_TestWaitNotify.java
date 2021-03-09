@@ -1,6 +1,6 @@
 package com.wyz.juc.c_011_01_syncwaitnotify;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class T01_TestWaitNotify {
     private static Object o = new Object();
@@ -9,7 +9,7 @@ public class T01_TestWaitNotify {
         new Thread(() -> {
             synchronized (o) {
                 System.out.println("starting ...");
-                SleepHelper.sleepSeconds(1);
+                SleepHelperUtil.sleepSeconds(1);
                 try {
                     o.wait();
                 } catch (InterruptedException e) {
@@ -20,7 +20,7 @@ public class T01_TestWaitNotify {
         }).start();
 
 
-        SleepHelper.sleepSeconds(5);
+        SleepHelperUtil.sleepSeconds(5);
 
         synchronized (o) {
             //o.notify();

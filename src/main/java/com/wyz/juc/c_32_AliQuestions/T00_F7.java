@@ -1,6 +1,6 @@
 package com.wyz.juc.c_32_AliQuestions;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +90,7 @@ public class T00_F7 {
             int total = 0;
 
             for (; ; ) {
-                SleepHelper.sleepMilli(interval); //cpu密集型
+                SleepHelperUtil.sleepMilli(interval); //cpu密集型
                 total += interval;
                 if (total / 1000 >= timeInSeconds) {
                     System.out.println(name + " 任务结束！" + result); //正常结束
@@ -118,7 +118,7 @@ public class T00_F7 {
         private void rollback() {
             //如何书写回滚？
             System.out.println(name + " rollback start...");
-            SleepHelper.sleepMilli(500);
+            SleepHelperUtil.sleepMilli(500);
             System.out.println(name + " rollback end!");
 
         }

@@ -5,7 +5,7 @@
  */
 package com.wyz.juc.c_022_RefTypeAndThreadLocal;
 
-import com.wyz.util.SleepHelper;
+import com.wyz.util.SleepHelperUtil;
 
 public class ThreadLocal1 {
     static Person p = new Person();
@@ -13,12 +13,12 @@ public class ThreadLocal1 {
     public static void main(String[] args) {
 
         new Thread(() -> {
-            SleepHelper.sleepSeconds(1);
+            SleepHelperUtil.sleepSeconds(1);
             p.name = "lisi";
         }).start();
 
         new Thread(() -> {
-            SleepHelper.sleepSeconds(2);
+            SleepHelperUtil.sleepSeconds(2);
             System.out.println(p.name);
         }).start();
 
