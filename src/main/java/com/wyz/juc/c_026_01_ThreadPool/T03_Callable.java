@@ -15,9 +15,9 @@ public class T03_Callable {
         };
 
         ExecutorService service = Executors.newCachedThreadPool();
-        Future<String> future = service.submit(c); //
+        Future<String> future = service.submit(c);
 
-        System.out.println(future.get());//
+        System.out.println(future.get());
 
         service.shutdown();
     }
