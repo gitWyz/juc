@@ -12,11 +12,6 @@ package com.wyz.juc.c_022_RefTypeAndThreadLocal;
 
 import com.wyz.util.SleepHelperUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.WeakHashMap;
-import java.util.concurrent.TimeUnit;
-
 public class ThreadLocal2 {
     //volatile static Person p = new Person();
     static ThreadLocal<Person> tl = new ThreadLocal<>();
